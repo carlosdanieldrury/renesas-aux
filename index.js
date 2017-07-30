@@ -42,10 +42,11 @@ ref.once('value')
  console.log('snap.val()', snap.val());
 });
 
-app.get('/temperatura', (req, res) => {
+app.get('/temperatura', function (req, res) {
     const temperatura = req.query.valor != null ? req.query.valor : 0
+    res.send('temperatura recebida ' + temperatura)
     sendTemp(temperatura)
-    res.send('temperatura recebida ', temperatura)
+
 })
 
 app.listen(port, () => console.log('Server running on ' + port))
